@@ -8,7 +8,8 @@
    var right_button = document.querySelector("#right");
    var full_screen_button = document.querySelector("#full");
    var framecontainer = document.querySelector("#framecontainer");
-   var tools = document.querySelector("#tools");
+   var sidecontainer = document.querySelector("#sidecontainer");
+   //var tools = document.querySelector("#tools");
    var mainframe = $("#mainframe");
    mainframe.prop("src","http://localhost:8080/client/index.jsp");
 
@@ -37,6 +38,7 @@
         win.setPosition(1, 1, true);
         win.setResizable(false);
         framecontainer.style.display = "none";
+        sidecontainer.style.display = "";
    });
    
    right_button.addEventListener("click",function(event){
@@ -49,11 +51,12 @@
         
         if(!win.isMovable())  //设置窗口可移动，该接口官方文档介绍说该方法对linux无效.
             win.setMovable(true);
-        //var myscreen = remote.screen;
-        //var size = myscreen.getPrimaryDisplay().workAreaSize;
-        win.setPosition(1241, 1, true);
+        var myscreen = remote.screen;
+        var size = myscreen.getPrimaryDisplay().workAreaSize;
+        win.setPosition(size.width, 1, true);
         win.setResizable(false); 
         framecontainer.style.display = "none";
+        sidecontainer.style.display = "";
    }); 
 
    full_screen_button.addEventListener("click",function(event){
@@ -64,15 +67,16 @@
         
    });
 
-   tools.addEventListener("click",function(event){
-       win.webContents.openDevTools();
-   })
+   //tools.addEventListener("click",function(event){
+   //    win.webContents.openDevTools();
+  // })
    
 
   win.on("enter-full-screen",function(event){
-    var tools = document.querySelector("#tools");
-    tools.style.display = "";
+    //var tools = document.querySelector("#tools");
+    //tools.style.display = "";
     //win.webContents.openDevTools();
+    sidecontainer.style.display = "none";
     if(right_button.style.display=="none")
         right_button.style.display = "";
     if(left_button.style.display=="none")
@@ -80,13 +84,12 @@
     if(framecontainer.style.display = "none")
         framecontainer.style.display = "";
     win.setResizable(false);
-    console.log(win);
   });
 
   win.on("leave-full-screen",function(event){
     //var tools = document.querySelector("#tools");
     //tools.style.display = "none";
-    win.webContents.closeDevTools();
+    //win.webContents.closeDevTools();
     
   });
 

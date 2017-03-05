@@ -13,9 +13,9 @@
 </head>
 <body>
     <div align="right" style="width:100%;background-color:black;border-bottom: 1px darkgrey solid;padding: 5px 0px;">
-        <!-- tools 为浏览器调试功能 -->
+        <!-- tools 为浏览器调试功能 
         <img id="tools" style="height: 15px;width: 15px;cursor: pointer;" src="node_modules/images/tools.png"/>
-        
+        -->
         <img id="full" style="height: 15px;width: 15px;cursor: pointer;" src="node_modules/images/fullscreen.jpg"/>
         <img id="left" style="height: 15px;width: 15px;cursor:pointer;" src="node_modules/images/sign_out.png"/>
         <img id="right" style="height: 15px;width: 15px;cursor: pointer;" src="node_modules/images/sign_in.png"/>
@@ -23,6 +23,12 @@
     </div>
     <div id="framecontainer">
         <iframe frameborder="0" id="mainframe"></iframe>
+    </div>
+    <div id="sidecontainer"  style="display:none;">
+        <iframe frameborder="0" id="sideframe" src="http://localhost:8080/client/app/side/goSidePage.action"></iframe>
+    </div>
+    <div id="status" align="center" style="border-top: 1px darkgrey;">
+        <img id="right" title="network" style="height:20px;width:20px;" src="node_modules/images/disconnect.jpg"/>
     </div>
     <script type="text/javascript" src="mainWindow.js"></script>
 </body>

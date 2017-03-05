@@ -12,18 +12,23 @@
 </script>
 </head>
 <body>
-    <div align="right">
-        <img style="height: 15px;width: 15px;cursor:pointer;" src="node_modules/images/sign_out.png"/>
-        <img style="height: 15px;width: 15px;cursor: pointer;" src="node_modules/images/sign_in.png"/>
+    <div align="right" style="width:100%;background-color:black;border-bottom: 1px darkgrey solid;padding: 5px 0px;">
+        <!-- tools 为浏览器调试功能 -->
+        <img id="tools" style="height: 15px;width: 15px;cursor: pointer;" src="node_modules/images/tools.png"/>
+        
+        <img id="full" style="height: 15px;width: 15px;cursor: pointer;" src="node_modules/images/fullscreen.jpg"/>
+        <img id="left" style="height: 15px;width: 15px;cursor:pointer;" src="node_modules/images/sign_out.png"/>
+        <img id="right" style="height: 15px;width: 15px;cursor: pointer;" src="node_modules/images/sign_in.png"/>
         <img id="closed" style="cursor:pointer;" src="node_modules/images/button_close.png"/>
     </div>
-    <iframe frameborder="0" id="mainframe"></iframe>
+    <div id="framecontainer">
+        <iframe frameborder="0" id="mainframe"></iframe>
+    </div>
     <script type="text/javascript" src="mainWindow.js"></script>
 </body>
 <script type="text/javascript">
     $(document).ready(function(){
         $("iframe").on("load",function(){
-            console.log(this.src);
             win.setFullScreen(true);
         });
     });

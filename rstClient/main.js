@@ -15,7 +15,7 @@ let mainWindow
 function createWindow () {
   // Create the browser window.
   //mainWindow = new BrowserWindow({width: 500, height: 400,frame:false,resizable:false})
-  mainWindow = new BrowserWindow({width: 500, height: 410,frame:false})
+  mainWindow = new BrowserWindow({frame:true,maximizable:false});
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -25,7 +25,7 @@ function createWindow () {
   }))
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  //mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -34,6 +34,7 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+
 }
 
 // This method will be called when Electron has finished
